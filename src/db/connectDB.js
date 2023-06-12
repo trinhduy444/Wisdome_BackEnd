@@ -14,8 +14,6 @@ class Database {
       .then(console.log('\x1b[32m%s\x1b[0m',`Connect ${typeDB} Successfully`))
       .catch((err) => console.log(err));
   }
-  
-
 
   // Old code
   // connect(typeDB = "MongoDB") {

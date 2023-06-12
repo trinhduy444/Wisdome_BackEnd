@@ -107,7 +107,7 @@ shopSchema.pre("save", async function (next) {
 shopSchema.methods = {
   comparePassword: async function (password) {
     console.log("Run compare password\nPass From Client : " + password + "\n" + "Pass in Database : " + this.shop_password);
-    return password == this.shop_password;
+    return await bcrypt.compare(password, this.shop_password);
     
     // ??? What thing behide bcypt ???
     // await bcrypt.compare(password, this.shop_password)

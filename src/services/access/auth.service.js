@@ -131,7 +131,6 @@ class AuthShopService {
 
     // Save refreshToken to cookie( age: 7day)
     res.cookie("refreshToken", newRefreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
-
     return {
       user: { userId, userName, email },
       newAccessToken,
@@ -145,7 +144,6 @@ class AuthShopService {
      * 2. Server check email validity => Send link for client on gmail
      * 3. Client send mail => Click link => Send API and Token
      */
-
     const { email } = req.query
 
     if (!email) throw new BadRequestError('Not found email')
@@ -190,7 +188,6 @@ class AuthShopService {
         shop_passwordResetExpires: undefined,
       },
     });
-
     return
   }
 }

@@ -30,12 +30,12 @@ const orderSchema = new Schema(
     order_detail: {
       type: Schema.Types.ObjectId,
       ref: "OrderDetail",
-      required: [true, "Please provide order detail id"],
+      required: [true, "Please provide order detail id"]
     },
     order_processedByCustomer: {
       type: Schema.Types.ObjectId,
       ref: "Customer",
-      required: [true, "Please provide customer id"],
+      required: [true, "Please provide customer id"]
     },
   },
   {

@@ -34,7 +34,7 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
     new OK({
         message: "Get User Successfully",
-        metadata: await AdminService.getAllUsers(req, res)
+        metadata: await AdminService.getUserById(req, res)
     }).send(res)
 }
 const searchUsers = async (req, res) => {

@@ -1,7 +1,13 @@
 ﻿const express = require("express");
 const router = express.Router();
-
-const { signUpShop, signUpUser, login, logOut, refreshAccessToken, forgotPassword, resetPassword } = require("../controllers/auth.controller");
+const { signUpShop,
+        signUpUser,
+        login, 
+        logOut, 
+        refreshAccessToken, 
+        forgotPassword, 
+        resetPassword 
+    } = require("../controllers/auth.controller");
 const { authentication, checkAuthIsAdmin } = require("../auth/authUntil");
 
 router.route("/signUpUser").post(signUpUser); 

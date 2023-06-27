@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { checkAuthIsAdmin } = require("../auth/authUntil");
+const { checkAuthIsAdmin, checkAuthIsShop } = require("../auth/authUntil");
 const {
     getAllShops,
     getShopById,
@@ -11,6 +11,11 @@ const {
     searchUsers,
     deleteUserById
 } = require("../controllers/admin.controller");
+
+
+router.use(checkAuthIsAdmin);
+router.route('/user/search').get(searchUsers)
+router.route('/user/:userId').get(getUserById).delete(deleteUserById)
 
 
 router.use(checkAuthIsAdmin) // Only admin

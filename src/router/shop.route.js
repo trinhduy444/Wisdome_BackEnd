@@ -20,7 +20,7 @@ router.route("/food").get(getAllFoods);
 router.use(authentication);
 //////////////////////////
 // ---------------- Food ----------------
-router.route("/food").post(createFood);
+router.route("/createFood").post(createFood);
 router.route("/food/getByShop").get(getFoodByShopId);
 router.route("/food/getById/:foodId").get(getFoodById);
 

@@ -10,7 +10,7 @@ const ShippingModel = require("./collections/shipping.model");
 const ShopModel = require("./collections/shop.model");
 const SiteModel = require("./collections/site.model");
 const KeyTokenModel = require("./collections/keytoken.model");
-
+const ShopingCart = require("./Collections/shopingCart.model")
 
 module.exports = {
   KeyTokenModel,
@@ -25,4 +25,5 @@ module.exports = {
   ShippingModel,
   ShopModel,
   SiteModel,
+  ShopingCart
 };

@@ -41,10 +41,10 @@ const authentication = async (req, res, next) => {
   return next();
 };
 
-const checkAuthIsShop = async (req, res, next) => {
+const checkAuthIsUser = async (req, res, next) => {
   await authentication(req, res, next);
   const { role } = req.user;
-  if(role !== "SHOP") throw new UnauthenticatedError("You don't have enough permission visit here");
+  if(role !== "USER") throw new UnauthenticatedError("You don't have enough permission visit here");
 }
 
 const checkAuthIsAdmin = async (req, res, next) => {
@@ -56,6 +56,6 @@ const checkAuthIsAdmin = async (req, res, next) => {
 module.exports = {
   createTokenPair,
   authentication,
-  checkAuthIsShop,
+  checkAuthIsUser,
   checkAuthIsAdmin
 };

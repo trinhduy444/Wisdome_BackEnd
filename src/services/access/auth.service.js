@@ -38,7 +38,7 @@ class AuthShopService {
       //   // Create tokens (AT vs RT)
       //   const tokenPair = await createTokenPair({ userId: shopId, userName: shop_userName, email: shop_email, role: shop_role }, privateKey, publicKey);
       return {
-        auth: getInfoData(newUser, ["shop_firstName", "shop_lastName", "shop_userName", "shop_email"]),
+        auth: getInfoData(newUser, ["shop_firstName", "shop_lastName", "shop_userName", "shop_email","shop_phoneNumber"]),
       };
     }
     throw new BadRequestError("SignUp Error");
@@ -64,12 +64,12 @@ class AuthShopService {
 
     const { privateKey, publicKey } = createKeys();
 
-    const { _id: shopId, shop_userName, shop_email, shop_role } = foundShop;
+    const { _id: shopId, shop_userName, shop_email,shop_phoneNumber, shop_role } = foundShop;
 
     // AT save to Author
     // RT save to DB and Cookie
     const { accessToken, refreshToken } = await createTokenPair(
-      { userId: shopId, userName: shop_userName, email: shop_email, role: shop_role },
+      { userId: shopId, userName: shop_userName, email: shop_email, phoneNumber:shop_phoneNumber, role: shop_role },
       privateKey,
       publicKey
     );
@@ -81,7 +81,7 @@ class AuthShopService {
     // Save refreshToken to cookie( age: 7day)
     res.cookie("refreshToken", refreshToken, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });
     return {
-      shop: getInfoData(foundShop, ["_id", "shop_firstName", "shop_lastName", "shop_userName", "shop_email"]),
+      shop: getInfoData(foundShop, ["_id", "shop_firstName", "shop_lastName", "shop_userName","shop_phoneNumber", "shop_email" ]),
       accessToken,
     };
   }

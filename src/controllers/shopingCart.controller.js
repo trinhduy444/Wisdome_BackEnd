@@ -28,12 +28,6 @@ const { OK, CREATED } = require("../core/success.response");
       metadata: await ShopingCartService.deleteAllFood(req, res),
     }).send(res);
   }
-  const getFood = async (req, res) =>{
-    new OK({
-      message: "Get Food Successfully",
-      metadata: await ShopingCartService.getFood(req, res),
-    }).send(res);
-  }
   const getAllFood = async (req, res) =>{
     new OK({
       message: "Get All Food Successfully",
@@ -46,7 +40,6 @@ const { OK, CREATED } = require("../core/success.response");
     updateFood,
     deleteFood,
     deleteAllFood,
-    getFood,
     getAllFood
   };
 

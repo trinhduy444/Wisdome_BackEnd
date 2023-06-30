@@ -26,10 +26,6 @@ class ShopingCartService {
             return newCart;
         }
 
-        // Cart Exist -> add new Food
-
-        // Find the food item with the matching cart_foodId
-
         const foodId = req.body.food.cart_foodId;
 
         const foodItem = cart.shopingCart_foods.find(

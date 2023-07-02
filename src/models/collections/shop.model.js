@@ -15,6 +15,14 @@ const shopSchema = new Schema(
       required: [true, "Please provide shop lastName"],
       maxlength: 50,
     },
+    shop_gerder: {
+      type : Number,
+      enum: [0, 1],
+      default: 0,
+    },
+    shop_birtday: {
+      type: String,
+    },
     shop_role: {
       type: String,
       enum: ["USER", "SHOP", "ADMIN"],

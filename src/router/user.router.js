@@ -6,8 +6,8 @@ const {
 } = require("../controllers/user.controller");
 
 
-router.use(checkAuthIsUser);
+// router.use(checkAuthIsUser);
 
 router.route('/updateInfor').post(updateInformaiton);
-
+        
 module.exports = router;

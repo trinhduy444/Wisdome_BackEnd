@@ -23,26 +23,43 @@ class FoodService {
   static async createTypeFood(req, res) {
     const dataCreate = {
       ...req.body,
-      foodType_shopId: req.user.userId
-    }
+      foodType_shopId: req.user.userId,
+    };
     const newTypeFood = await FoodTypeModel.create(dataCreate);
     if (!newTypeFood) throw new BadRequestError("Create type food error");
     return newTypeFood;
   }
 
   static async getAllTypeFood(req, res) {
-    const select = getSelectData(["foodType_name", "foodType_description", "foodType_shopId"]);
+    const select = getSelectData([
+      "foodType_name",
+      "foodType_description",
+      "foodType_shopId",
+    ]);
     const { limit, page } = req.query;
     const foodTypeList = await getAllTypeFood({ limit, page, select });
-    if (!foodTypeList || foodTypeList.length === 0) throw new BadRequestError("Food Type Not Found");
+    if (!foodTypeList || foodTypeList.length === 0)
+      throw new BadRequestError("Food Type Not Found");
     return foodTypeList;
   }
 
   // ------------------ Food ------------------
   static async createFood(req, res) {
     const { userId: food_shopId } = req.user;
+    const body = req.body;
+    const food_name = body.name;
+    const food_description = body.description;
+    const food_price = body.price;
+    const food_ingredient = body.ingredient;
+    const food_typeId = body.typeid;
+    const food_image = req.file.path;
     const dataCreate = {
-      ...req.body,
+      food_name,
+      food_price,
+      food_image,
+      food_ingredient,
+      food_description,
+      food_typeId,
       food_shopId,
     };
     const newFood = await FoodModel.create(dataCreate);

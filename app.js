@@ -39,7 +39,9 @@ require("./src/db/connectDB");
 const { checkOverload } = require("./src/helpers/check-connect");
 checkOverload();
 
+
 app.use("/", require("./src/router"));
+app.use("/src/images", express.static("src/images"));
 
 app.use(errorHandlerMiddleware);
 app.use("/**", notFound);

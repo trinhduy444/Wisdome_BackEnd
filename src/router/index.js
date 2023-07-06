@@ -9,10 +9,13 @@ const discountRouter = require("./discount.route");
 const shoppingCart = require("./shopingCart.router")
 const userRouter = require("./user.router");
 
+
+// Code try ( Delete Later )
 router.use("/banhMi",(req, res) => {
     const imagePath = path.join(__dirname, '../images/BanhMi.jpg');
     res.sendFile(imagePath);
   })
+// End
 router.use("/api/v1/auth", authRouter);
 router.use("/api/v1/shop", shopRouter);
 router.use("/api/v1/admin", adminRouter);

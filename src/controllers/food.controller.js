@@ -59,5 +59,5 @@ module.exports = {
   getFoodById,
   getFoodByShopId,
   getFoodBySearchField,
-  getAllFoods
+  getAllFoods,
 };

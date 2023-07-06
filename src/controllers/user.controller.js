@@ -8,8 +8,16 @@ const { OK } = require("../core/success.response");
       metadata: await profileService.updateInformaiton(req, res),
     }).send(res);
   }
+
+  const getInformation = async (req, res) => {
+    new OK({
+      message: "Get Information Successfully",
+      metadata: await profileService.getInformaiton(req, res),
+    }).send(res);
+  }
   module.exports = {
-    updateInformaiton
+    updateInformaiton,
+    getInformation
   };
 
 

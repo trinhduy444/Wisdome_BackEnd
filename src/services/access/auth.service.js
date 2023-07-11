@@ -19,14 +19,14 @@ class AuthShopService {
   static async signUpUser(req, res) {
     const { firstName, lastName, userName, email, password, phoneNumber, address,birtDay } = req.body;
     const newUser = await ShopModel.create({
-      shop_firstName: firstName,
-      shop_lastName: lastName,
+      // shop_firstName: firstName,
+      // shop_lastName: lastName,
       shop_userName: userName,
       shop_email: email,
       shop_password: password,
-      shop_phoneNumber: phoneNumber,
-      shop_birtDay: birtDay,
-      shop_address: address
+      shop_phoneNumber: phoneNumber
+      // shop_birtDay: birtDay,
+      // shop_address: address
     });
     if (newUser) {
       //   const { privateKey, publicKey } = createKeys();

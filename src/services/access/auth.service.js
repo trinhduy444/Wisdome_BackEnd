@@ -17,7 +17,8 @@ class AuthShopService {
   }
 
   static async signUpUser(req, res) {
-    const { firstName, lastName, userName, email, password, phoneNumber, address,birtDay } = req.body;
+    const { firstName, lastName, userName, email, password, phoneNumber, address } = req.body;
+    const birtDay = "0/00/0000";
     const newUser = await ShopModel.create({
       shop_firstName: firstName,
       shop_lastName: lastName,
@@ -25,7 +26,7 @@ class AuthShopService {
       shop_email: email,
       shop_password: password,
       shop_phoneNumber: phoneNumber,
-      shop_birtDay: "0/00/0000",
+      shop_birtDay: birtDay,
       shop_address: address
     });
     if (newUser) {

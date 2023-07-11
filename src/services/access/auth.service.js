@@ -1,4 +1,4 @@
-﻿const { createTokenPair } = require("../../auth/authUntil");
+const { createTokenPair } = require("../../auth/authUntil");
 const { BadRequestError, ForbiddenError } = require("../../core/error.response");
 const { ShopModel } = require("../../models");
 const crypto = require('crypto')
@@ -26,7 +26,7 @@ class AuthShopService {
       shop_email: email,
       shop_password: password,
       shop_phoneNumber: phoneNumber,
-      shop_birtDay: birtDay,
+      shop_birtday: birtDay,
       shop_address: address
     });
     if (newUser) {

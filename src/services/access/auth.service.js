@@ -26,7 +26,7 @@ class AuthShopService {
       shop_password: password,
       shop_phoneNumber: phoneNumber,
       shop_birtDay: "0/00/0000",
-      // shop_address: address
+      shop_address: address
     });
     if (newUser) {
       //   const { privateKey, publicKey } = createKeys();

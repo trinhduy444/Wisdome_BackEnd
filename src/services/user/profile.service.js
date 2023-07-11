@@ -10,6 +10,7 @@ class profileService {
       shop_birtday: body.shop_birtday,
       shop_phoneNumber: body.shop_phoneNumber,
       shop_address: body.shop_address,
+      shop_lastName: body.shop_lastName,
     };
     console.log(update);
     let user = await ShopModel.findOneAndUpdate(

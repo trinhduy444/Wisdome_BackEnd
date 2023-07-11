@@ -24,7 +24,7 @@ class AuthShopService {
       shop_userName: userName,
       shop_email: email,
       shop_password: password,
-      shop_phoneNumber: phoneNumber
+      shop_phoneNumber: phoneNumber,
       shop_birtDay: "0/00/0000",
       // shop_address: address
     });

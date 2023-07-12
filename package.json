@@ -1,12 +1,11 @@
 {
   "name": "projectcompanydelivery",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "Trinh Truong Duy and 2 others",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -34,5 +33,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NhutNguyenDev/Wisdom_Delivery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NhutNguyenDev/Wisdom_Delivery/issues"
+  },
+  "homepage": "https://github.com/NhutNguyenDev/Wisdom_Delivery#readme",
+  "description": ""
 }

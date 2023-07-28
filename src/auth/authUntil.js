@@ -21,17 +21,23 @@ const createTokenPair = async (payload, privateKey, publicKey) => {
 };
 
 const authentication = async (req, res, next) => {
-  const accessToken = req.headers.authorization;
 
-  if (!accessToken?.startsWith("Bearer ")) throw new ForbiddenError("Token invalid");
+  // handle access token
+  const accessToken = req.headers.authorization;
+  if (!accessToken?.startsWith("Bearer ")) throw new ForbiddenError("Token invalid"); // 403
 
   // const userId = req.headers[HEADERS.CLIENT_ID];
 
+  // handle refresh token
   const { refreshToken } = req.cookies
-  if (!refreshToken) throw new BadRequestError("refreshToken doesn't exist on cookies");
+  if (!refreshToken) throw new BadRequestError("refreshToken doesn't exist on cookies"); // 400
+
+  // check 
+  // console.log(">>>>>>>>>>>>>>>>>> access token:",accessToken);
+  // console.log(">>>>>>>>>>>>>>>>> refresh token:",refreshToken);
 
   const keyStore = await KeyTokenModel.findOne({ refreshTokenUsing: refreshToken });
-  if (!keyStore) throw new ForbiddenError("KeyStore invalid");
+  if (!keyStore) throw new ForbiddenError("KeyStore invalid"); // 403
 
   const payload = JWT.verify(accessToken.split(" ")[1], keyStore.publicKey);
 

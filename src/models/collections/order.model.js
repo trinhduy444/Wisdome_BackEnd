@@ -4,44 +4,54 @@ const COLLECTION_NAME = "Order";
 // Declare the Schema of the Mongo model
 const orderSchema = new Schema(
   {
-    order_shopId: {
-      type: Schema.Types.ObjectId,
-      ref: "Shop",
-      required: [true, "Please provide shop id"],
-    },
-    order_customerId: {
+    customer_id: {
       type: Schema.Types.ObjectId,
       ref: "Customer",
       required: [true, "Please provide customer id"],
     },
-    order_foodOrdered: {
-      type: [Schema.Types.ObjectId],
-      ref: "Food",
-      required: [true, "Please provide foods id"],
+    image_shop: {
+      type: String,
+      required: [false, "Please provide image of the shop"],
     },
-    order_totalAmount: {
+    shop_name: {
+      type: String,
+      default: "Shop Anonymous",
+      required: [true, "Please provide shop name"],
+    },
+    status: {
+      type: String,
+      enum: ["pending", "processing", "completed"],
+      default: "pending",
+    },
+    totalPrice: {
       type: Number,
-      default: 0,
+      required: [true, "Please provide total price"],
     },
-    order_status: {
-      type: Boolean,
-      default: false,
+    date_order: {
+      type: Date,
+      required: [true, "Please provide order date"],
     },
-    order_detail: {
-      type: Schema.Types.ObjectId,
-      ref: "OrderDetail",
-      required: [true, "Please provide order detail id"]
+    time_order: {
+      type: String,
+      default: "00:00",
+      required: [true, "Please provide order time"],
     },
-    order_processedByCustomer: {
-      type: Schema.Types.ObjectId,
-      ref: "Customer",
-      required: [true, "Please provide customer id"]
-    },
+    food_name: [
+      {
+        type: String,
+        required: [true, "Please provide food name"],
+      },
+    ],
+    food_amount: [
+      {
+        type: Number,
+        required: [true, "Please provide food amount"],
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
-
 //Export the model
 module.exports = model(COLLECTION_NAME, orderSchema);

@@ -4,46 +4,36 @@ const COLLECTION_NAME = "OrderDetail";
 // Declare the Schema of the Mongo model
 const orderDetailSchema = new Schema(
   {
-    orderdetail_amount: { 
-      type: Number, // Price all food
-      default: 0,
-    },
-    orderdetail_discount: {
-      type: Number, // Total discount for per food 
-      default: 0,
-    },
-    orderdetail_tax: {
-      type: Number, // Percentage
-      default: 10,
-    },
-    orderdetail_totalAmount: {
-      type: Number, // PriceFoods - Discount + Tax + (Service)
-      default: 0,
-    },
-    orderdetail_discountId: {
-      type: Schema.Types.ObjectId,
-      ref: "Discount",
-      required: [true, "Please provide discount id"],
-    },
-    orderdetail_orderId: {
+    order_id: {
       type: Schema.Types.ObjectId,
       ref: "Order",
       required: [true, "Please provide order id"],
     },
-    orderdetail_paymentId: {
-      type: Schema.Types.ObjectId, // Applied when customer payment food
-      ref: "Payment",
+    shipper_id: {
+      type: Schema.Types.ObjectId,
+      required: [true, "Please provide shipper id"],
     },
-    // order_foodOrdered: {
-    //   type: [Schema.Types.ObjectId],
-    //   ref: "Food",
-    //   required: [true, "Please provide foods id"],
-    // },
-    // orderdetail_shopId: {
-    //   type: Schema.Types.ObjectId,
-    //   ref: "Discount",
-    //   required: [true, "Please provide discount id"],
-    // },
+    note: {
+      type: String,
+    },
+    address_restaurant: {
+      type: String,
+      required: [true, "Please provide restaurant address"],
+    },
+    address_customer: {
+      type: String,
+      required: [true, "Please provide customer address"],
+    },
+    payment_name: {
+      type: String,
+      enum: ["Cash", "Momo", "E-Banking", "Credit Card"],
+      default: "Cash",
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+    },
   },
   {
     timestamps: true,

@@ -8,7 +8,8 @@ const adminRouter = require("./admin.router");
 const discountRouter = require("./discount.route");
 const shoppingCart = require("./shopingCart.router")
 const userRouter = require("./user.router");
-
+const orderRouter = require("./Order.router");
+const orderDetailRouter = require("./orderDetail.router");
 
 // Code try ( Delete Later )
 router.use("/banhMi",(req, res) => {
@@ -21,6 +22,9 @@ router.use("/api/v1/shop", shopRouter);
 router.use("/api/v1/admin", adminRouter);
 router.use("/api/v1/discount", discountRouter);
 router.use("/api/v1/shoppingCart", shoppingCart);
-router.use("/api/v1/user", userRouter)
+router.use("/api/v1/user", userRouter);
+router.use("/api/v1/order",orderRouter);
+router.use("/api/v1/order/detail",orderDetailRouter);
+
 
 module.exports = router;

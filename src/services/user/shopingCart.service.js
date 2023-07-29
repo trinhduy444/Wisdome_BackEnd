@@ -53,6 +53,10 @@ class ShopingCartService {
         const foodUpdateId = req.body.food.cart_foodId;
         const foodUpdateQuantity = req.body.food.quantity;
 
+        console.log(">>> update food id");
+        console.log(">>> update food id food");
+        console.log(">>> update food quantity");
+
         let cart = await ShopingCart.findOne({
             shopingCart_customerId: customerId
         })

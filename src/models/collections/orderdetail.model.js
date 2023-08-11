@@ -11,6 +11,7 @@ const orderDetailSchema = new Schema(
     },
     shipper_id: {
       type: Schema.Types.ObjectId,
+      default: "64c3f5b612f6a57bcf01c0e4",
       required: [true, "Please provide shipper id"],
     },
     note: {

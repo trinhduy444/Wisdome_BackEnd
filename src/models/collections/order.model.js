@@ -20,8 +20,8 @@ const orderSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "processing", "completed"],
-      default: "pending",
+      enum: ["Pending", "Processing", "Completed"],
+      default: "Pending",
     },
     totalPrice: {
       type: Number,

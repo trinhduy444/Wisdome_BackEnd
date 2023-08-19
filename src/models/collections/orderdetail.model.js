@@ -32,7 +32,8 @@ const orderDetailSchema = new Schema(
     },
     rating: {
       type: Number,
-      min: 1,
+      default: 5,
+      min: 0,
       max: 5,
     },
   },

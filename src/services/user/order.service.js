@@ -1,6 +1,6 @@
 const { BadRequestError, NotFoundError } = require("../../core/error.response");
 
-const { OrderModel } = require("../../models");
+const { OrderModel,OrderDetailModel } = require("../../models");
 
 class OrderService {
   static async createOrder(req) {
@@ -17,6 +17,20 @@ class OrderService {
         food_amount: orderData.food_amount,
         });
     if (!newOrder) throw new BadRequestError("Create Order Error");
+
+    const orderDetailData = {
+      order_id: newOrder._id, // Sử dụng _id của đơn hàng mới tạo
+      shipper_id: orderData.shipper_id,
+      note: orderData.note,
+      address_restaurant: orderData.address_restaurant,
+      address_customer: orderData.address_customer,
+      payment_name: orderData.payment_name,
+      rating: orderData.rating,
+    };
+
+    const newOrderDetail = await OrderDetailModel.create(orderDetailData);
+
+    if (!newOrderDetail) throw new BadRequestError("Create OrderDetail Error");
     return newOrder;
 
   }

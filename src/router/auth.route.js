@@ -1,6 +1,7 @@
 ﻿const express = require("express");
 const router = express.Router();
 const { signUpShop,
+        signUpDriver,
         signUpUser,
         login, 
         logOut, 
@@ -11,6 +12,8 @@ const { signUpShop,
 const { authentication, checkAuthIsAdmin } = require("../auth/authUntil");
 
 router.route("/signUpUser").post(signUpUser); 
+router.route("/signUpDriver").post(signUpDriver); 
+
 router.route("/login").post(login);
 router.route("/refreshAT").post(refreshAccessToken);
 router.route("/resetPassword").get(forgotPassword);

@@ -1,6 +1,6 @@
 const { createTokenPair } = require("../../auth/authUntil");
 const { BadRequestError, ForbiddenError } = require("../../core/error.response");
-const { ShopModel } = require("../../models");
+const { ShopModel, ShipperModel } = require("../../models");
 const crypto = require('crypto')
 const bcrypt = require('bcrypt')
 const createKeys = require("../../utils/createKey.util");
@@ -47,6 +47,41 @@ class AuthShopService {
     throw new BadRequestError("SignUp Error");
   }
 
+  static async signUpDriver(req, res) {
+    const { firstName, lastName, userName, email, password, phoneNumber,birthday, address } = req.body;
+    const existingDriver = await ShopModel.findOne({ $or: [{ shop_email: email }, { shop_userName: userName }] });
+
+    if (existingDriver) {
+      // Trả về thông báo nếu tài khoản đã tồn tại
+      return res.status(400).json({ message: "Tài khoản đã tồn tại." });
+    }
+    
+    const newDriver = await ShopModel.create({
+      shop_firstName: firstName,
+      shop_lastName: lastName,
+      shop_userName: userName,
+      shop_email: email,
+      shop_password: password,
+      shop_phoneNumber: phoneNumber,
+      shop_birtday: birthday,
+      shop_address: address,
+      shop_role: "DRIVER"
+    });
+    const newShipper = await ShipperModel.create({
+      shipper_accountId: newDriver._id,
+      shipper_name: newDriver.shop_firstName + " " + newDriver.shop_lastName,
+      shipper_phoneNumber: newDriver.shop_phoneNumber,
+      shipper_email: newDriver.shop_email,
+    });
+
+    if (newDriver) {
+      return {
+        newShipper: getInfoData(newShipper, ["shipper_accountId", "shipper_name", "shipper_phoneNumber","shipper_email"]),
+        auth: getInfoData(newDriver, ["shop_firstName", "shop_lastName", "shop_userName", "shop_email","shop_phoneNumber","shop_birtday","shop_address","shop_role"]),
+      };
+    }
+    throw new BadRequestError("SignUp Error");
+  }
 
   /**
     1. Login with email, password

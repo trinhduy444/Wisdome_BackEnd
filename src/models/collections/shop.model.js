@@ -25,7 +25,7 @@ const shopSchema = new Schema(
     },
     shop_role: {
       type: String,
-      enum: ["USER", "SHOP", "ADMIN"],
+      enum: ["USER", "SHOP", "ADMIN","DRIVER"],
       default: "USER",
     },
     shop_phoneNumber: {

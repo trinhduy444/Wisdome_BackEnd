@@ -16,6 +16,13 @@ const signUpShop = async (req, res) => {
   }).send(res);
 };
 
+const signUpDriver = async (req, res) => {
+  new CREATED({
+    message: "Create Driver Account Successfully",
+    metadata: await AuthService.signUpDriver(req, res),
+  }).send(res);
+};
+
 const login = async (req, res) => {
   new OK({
     message: "Login Successfully",
@@ -53,4 +60,4 @@ const resetPassword = async (req, res) => {
 
 
 
-module.exports = { signUpUser, signUpShop, login, logOut, refreshAccessToken, forgotPassword, resetPassword };
+module.exports = { signUpUser, signUpDriver, signUpShop, login, logOut, refreshAccessToken, forgotPassword, resetPassword };

@@ -11,6 +11,7 @@ const userRouter = require("./user.router");
 const orderRouter = require("./Order.router");
 const orderDetailRouter = require("./orderDetail.router");
 const shipperProfileRouter = require("./driver/profile.router");
+const deliveryRouter = require("./driver/delivery.router");
 
 // Code try ( Delete Later )
 router.use("/banhMi",(req, res) => {
@@ -29,6 +30,7 @@ router.use("/api/v1/order/detail",orderDetailRouter);
 
 // Driver
 router.use("/api/v1/driver/",shipperProfileRouter);
+router.use("/api/v1/driver/delivery", deliveryRouter);
 
 
 module.exports = router;

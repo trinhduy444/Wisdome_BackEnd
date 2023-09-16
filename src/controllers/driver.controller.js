@@ -1,4 +1,6 @@
 const ShipperProfileService = require("../services/driver/profile.service");
+const DeliveryService = require("../services/driver/delivery.service");
+
 const { OK } = require("../core/success.response");
 
 
@@ -14,7 +16,15 @@ const updateShipperProfile = async (req, res) => {
     metadata: await ShipperProfileService.updateShipperProfile(req, res),
   }).send(res);
 };
+
+const getAllOrder = async (req, res) => {
+  new OK({
+    message: "Get All Order Successfully",
+    metadata: await DeliveryService.getAllOrder(req, res),
+  }).send(res);
+};
 module.exports = {
     getShipperProfile,
-    updateShipperProfile
+    updateShipperProfile,
+    getAllOrder
 }

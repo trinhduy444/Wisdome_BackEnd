@@ -52,8 +52,8 @@ const shipperSchema = new Schema(
     },
     shipper_status: {
       type: String,
-      enum: ["ACTIVE", "INACTIVE", "BLOCKED"],
-      default: "BLOCKED",
+      enum: ["ACTIVE", "INACTIVE", "BLOCKED","UNVERIFIED","VERIFIED"],
+      default: "UNVERIFIED",
     },
     shipper_rating: {
       type: Number,

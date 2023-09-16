@@ -10,6 +10,7 @@ const shoppingCart = require("./shopingCart.router")
 const userRouter = require("./user.router");
 const orderRouter = require("./Order.router");
 const orderDetailRouter = require("./orderDetail.router");
+const shipperProfileRouter = require("./driver/profile.router");
 
 // Code try ( Delete Later )
 router.use("/banhMi",(req, res) => {
@@ -25,6 +26,9 @@ router.use("/api/v1/shoppingCart", shoppingCart);
 router.use("/api/v1/user", userRouter);
 router.use("/api/v1/order",orderRouter);
 router.use("/api/v1/order/detail",orderDetailRouter);
+
+// Driver
+router.use("/api/v1/driver/",shipperProfileRouter);
 
 
 module.exports = router;
